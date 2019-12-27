@@ -1,0 +1,3 @@
+db.user=campus_card
+db.password=campus_card
+db.url=jdbc:mysql://localhost:3306/campus_card
