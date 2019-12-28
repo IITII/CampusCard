@@ -143,10 +143,11 @@ public class Dao {
      */
     public List<Transaction> findTransactionsByCardId(long cardId, int pageNumber, int pageSize) {
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from transaction where from_card_id = ? order by create_at desc limit ?, ?");
+            PreparedStatement statement = connection.prepareStatement("select * from transaction where from_card_id = ? or to_card_id = ? order by create_at desc limit ?, ?");
             statement.setLong(1, cardId);
-            statement.setInt(2, (pageNumber - 1) * pageSize);
-            statement.setInt(3, pageSize);
+            statement.setLong(2, cardId);
+            statement.setInt(3, (pageNumber - 1) * pageSize);
+            statement.setInt(4, pageSize);
             return parseTransactions(statement.executeQuery());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,13 +157,28 @@ public class Dao {
 
     public List<Transaction> findTransactionsByCardId(long cardId) {
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from transaction where from_card_id = ? order by create_at desc");
+            PreparedStatement statement = connection.prepareStatement("select * from transaction where from_card_id = ? or to_card_id = ? order by create_at desc");
             statement.setLong(1, cardId);
+            statement.setLong(2, cardId);
             return parseTransactions(statement.executeQuery());
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public int countTransactionsByCardId(long cardId) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("select count(*) from transaction where from_card_id = ? or to_card_id = ?");
+            statement.setLong(1, cardId);
+            statement.setLong(2, cardId);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public Long insertUser(String username, String password, int type) {
@@ -215,6 +231,17 @@ public class Dao {
             PreparedStatement statement = connection.prepareStatement("update card set daily_limit = ? where id = ?");
             statement.setFloat(1, dailyLimit);
             statement.setLong(2, cardId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updatePasswordByUserId(long userId, String password) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("update user set user.password = ? where id = ?");
+            statement.setString(1, password);
+            statement.setLong(2, userId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
