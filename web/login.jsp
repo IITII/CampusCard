@@ -16,7 +16,7 @@
             <td><input id="password-input" name="password" type="password" placeholder="请输入密码"/></td>
         </tr>
         <tr>
-            <td colspan="2"><span>${sessionScope.error}</span></td>
+            <td colspan="2"><span class="error">${sessionScope.error}</span></td>
         </tr>
         <tr>
             <td colspan="2"><button type="submit">登录</button></td>
