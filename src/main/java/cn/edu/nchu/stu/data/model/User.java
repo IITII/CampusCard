@@ -2,6 +2,12 @@ package cn.edu.nchu.stu.data.model;
 
 public class User {
 
+    public static final int STUDENT = 1;
+
+    public static final int ADMINISTRATOR = 2;
+
+    public static final int STAFF = 3;
+
     private long id;
 
     private String username, password, typeName;

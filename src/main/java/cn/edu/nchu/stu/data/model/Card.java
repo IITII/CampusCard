@@ -8,16 +8,16 @@ public class Card {
 
     private String typeName;
 
-    private boolean enable;
+    private boolean enabled;
 
     private float balance, dailyLimit;
 
-    public Card(long id, long userId, int type, String typeName, boolean enable, float balance, float dailyLimit) {
+    public Card(long id, long userId, int type, String typeName, boolean enabled, float balance, float dailyLimit) {
         this.id = id;
         this.userId = userId;
         this.type = type;
         this.typeName = typeName;
-        this.enable = enable;
+        this.enabled = enabled;
         this.balance = balance;
         this.dailyLimit = dailyLimit;
     }
@@ -38,8 +38,8 @@ public class Card {
         return typeName;
     }
 
-    public boolean isEnable() {
-        return enable;
+    public boolean isEnabled() {
+        return enabled;
     }
 
     public float getBalance() {

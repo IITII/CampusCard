@@ -16,14 +16,15 @@ create table card (
     id int primary key auto_increment,
     type int not null,
     user_id int not null,
-    enable bool default true,
+    enabled bool default true,
     balance decimal(65,2) default 0,
     daily_limit decimal(65,2) default 1000
 );
 
 create table transaction (
     id int primary key auto_increment,
-    card_id int not null,
+    from_card_id int not null,
+    to_card_id int not null,
     amount decimal(65,2) not null,
     create_at timestamp default now()
 );
@@ -44,4 +45,4 @@ create view user_view as
     select user.id, type, username, password, name as type_name from user left join user_type on type = user_type.id;
 
 create view card_view as
-    select card.id, type, name as type_name, enable, balance, daily_limit from card left join card_type on type = card_type.id;
+    select card.id, user_id, type, name as type_name, enabled, balance, daily_limit from card left join card_type on type = card_type.id;

@@ -4,15 +4,16 @@ import java.sql.Timestamp;
 
 public class Transaction {
 
-    private long id, cardId;
+    private long id, fromCardId, toCardId;
 
     private float amount;
 
     private Timestamp createAt;
 
-    public Transaction(long id, long cardId, float amount, Timestamp createAt) {
+    public Transaction(long id, long fromCardId, long toCardId, float amount, Timestamp createAt) {
         this.id = id;
-        this.cardId = cardId;
+        this.fromCardId = fromCardId;
+        this.toCardId = toCardId;
         this.amount = amount;
         this.createAt = createAt;
     }
@@ -21,8 +22,12 @@ public class Transaction {
         return id;
     }
 
-    public long getCardId() {
-        return cardId;
+    public long getFromCardId() {
+        return fromCardId;
+    }
+
+    public long getToCardId() {
+        return toCardId;
     }
 
     public float getAmount() {
