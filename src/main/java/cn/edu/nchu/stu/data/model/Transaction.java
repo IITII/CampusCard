@@ -10,7 +10,7 @@ public class Transaction {
 
     private Timestamp createAt;
 
-    public Transaction(long id, long fromCardId, long toCardId, float amount, Timestamp createAt) {
+    public Transaction(long id, Long fromCardId, Long toCardId, float amount, Timestamp createAt) {
         this.id = id;
         this.fromCardId = fromCardId;
         this.toCardId = toCardId;

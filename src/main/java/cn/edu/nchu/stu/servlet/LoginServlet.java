@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         else {
             User user = dao.findUserByUsername(username);
             if (user != null) {
-                session.setAttribute("user_id", user.getId());
+                session.setAttribute("user", user);
                 response.sendRedirect("index.jsp");
                 return;
             }

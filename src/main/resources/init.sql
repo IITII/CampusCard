@@ -23,8 +23,8 @@ create table card (
 
 create table transaction (
     id int primary key auto_increment,
-    from_card_id int not null,
-    to_card_id int not null,
+    from_card_id int,
+    to_card_id int,
     amount decimal(65,2) not null,
     create_at timestamp default now()
 );

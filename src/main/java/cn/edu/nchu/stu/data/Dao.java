@@ -97,24 +97,6 @@ public class Dao {
         return users;
     }
 
-    public User findUserById(long id) {
-        try {
-            PreparedStatement statement = connection.prepareStatement("select * from user_view where id = ?");
-            statement.setLong(1, id);
-            List<User> users = parseUsers(statement.executeQuery());
-            int size= users.size();
-            assert size <= 1;
-            if (size == 0) {
-                return null;
-            } else {
-                return users.get(0);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public User findUserByUsername(String username) {
         try {
             PreparedStatement statement = connection.prepareStatement("select * from user_view where username = ?");
@@ -146,7 +128,7 @@ public class Dao {
         return null;
     }
 
-    public List<Card> findCardByUserId(long userId) {
+    public List<Card> findCardsByUserId(long userId) {
         try {
             PreparedStatement statement = connection.prepareStatement("select * from card_view where user_id = ?");
             statement.setLong(1, userId);
@@ -247,14 +229,18 @@ public class Dao {
             statement.setLong(2, toCardId);
             statement.setFloat(3, amount);
             statement.executeUpdate();
-            statement = connection.prepareStatement("update card set balance = balance - ? where card.id = ?");
-            statement.setFloat(1, amount);
-            statement.setLong(2, fromCardId);
-            statement.executeUpdate();
-            statement = connection.prepareStatement("update card set balance = balance + ? where card.id = ?");
-            statement.setFloat(1, amount);
-            statement.setLong(2, toCardId);
-            statement.executeUpdate();
+            if (fromCardId != 0) {
+                statement = connection.prepareStatement("update card set balance = balance - ? where card.id = ?");
+                statement.setFloat(1, amount);
+                statement.setLong(2, fromCardId);
+                statement.executeUpdate();
+            }
+            if (toCardId != 0) {
+                statement = connection.prepareStatement("update card set balance = balance + ? where card.id = ?");
+                statement.setFloat(1, amount);
+                statement.setLong(2, toCardId);
+                statement.executeUpdate();
+            }
             connection.commit();
             connection.setAutoCommit(true);
             return true;
@@ -268,6 +254,4 @@ public class Dao {
         }
         return false;
     }
-
-
 }
