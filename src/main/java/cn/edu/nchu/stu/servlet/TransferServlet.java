@@ -29,14 +29,6 @@ public class TransferServlet extends HttpServlet {
             }
 
             if (fromCardId != 0 || toCardId != 0 && amount != 0) {
-                boolean fromCardBelongToUser = false;
-                for (Card card : dao.findCardsByUserId(user.getId())) {
-                    if (card.getId() == fromCardId) {
-                        fromCardBelongToUser = true;
-                        break;
-                    }
-                }
-
                 if (fromCardId == 0) {  /// 存款
                     if (user.getType() == User.ADMINISTRATOR) {
                         dao.transfer(fromCardId, toCardId, amount);
@@ -45,10 +37,16 @@ public class TransferServlet extends HttpServlet {
                         session.setAttribute("error", "权限不足");
                     }
                 } else { /// 取款 / 消费 / 转账
-                    if (fromCardBelongToUser) {
-
+                    Card card = dao.findCardById(fromCardId);
+                    if (card != null && card.getUserId() == user.getId()) {
+                        if (dao.transfer(fromCardId, toCardId, amount)) {
+                            /// TODO: 交易成功后跳转页面
+                            response.sendRedirect("");
+                        } else {
+                            session.setAttribute("error", "余额不足");
+                        }
                     } else {
-
+                        session.setAttribute("error", "权限不足");
                     }
                 }
             } else {
