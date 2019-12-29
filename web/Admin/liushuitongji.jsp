@@ -21,7 +21,7 @@
     <li><a href="${pageContext.request.contextPath}/Admin/shuakajizengshanchagai.jsp">刷卡机管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Admin/banka.jsp">办卡中心</a></li>
     <li><a href="${pageContext.request.contextPath}/Admin/liushuitongji.jsp" class="active">统计报表</a></li>
-    <li class="rightLi" style="float: right"><a href="">注销</a></li>
+    <li class="rightLi" style="float: right"><a href="${pageContext.request.contextPath}/logout.do">注销</a></li>
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Admin/liushuitongji.jsp" class="active">流水统计</a></li>
