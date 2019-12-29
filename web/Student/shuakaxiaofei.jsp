@@ -20,19 +20,20 @@
     <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp" class="active">刷卡管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/guashi.jsp">校园卡管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/chaxunlishiliushui.jsp">查询统计</a></li>
-    <li class="rightLi" style="float: right"><a href="${pageContext.request.contextPath}/logout.do">注销</a></li>
+    <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp" class="active">刷卡消费</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
-        <label>卡号：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
         <input type="text" name="card_id"><br>
-        <label>密码：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
         <input type="passsword" name="password"><br>
         <label>消费金额：</label>
-        <input type="number" name="amount"><br>
+        <input type="number" name="money"><br>
+        <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

@@ -33,6 +33,7 @@ public class TransferServlet extends HttpServlet {
                 if (fromCardId == 0) {  /// 存款
                     if (user.getType() == User.ADMINISTRATOR) {
                         dao.transfer(fromCardId, toCardId, amount);
+                        response.sendRedirect(redirectUrl == null ? "index.jsp" : redirectUrl);
                     }
                     else {
                         session.setAttribute("error", "权限不足");
@@ -41,8 +42,7 @@ public class TransferServlet extends HttpServlet {
                     Card card = dao.findCardById(fromCardId);
                     if (card != null && card.getUserId() == user.getId()) {
                         if (dao.transfer(fromCardId, toCardId, amount)) {
-                            /// TODO: 交易成功后跳转页面
-                            response.sendRedirect("");
+                            response.sendRedirect(redirectUrl == null ? "index.jsp" : redirectUrl);
                         } else {
                             session.setAttribute("error", "余额不足");
                         }
@@ -62,6 +62,6 @@ public class TransferServlet extends HttpServlet {
         else {
             session.setAttribute("error", "会话过期，请重新登录");
         }
-        response.sendRedirect(redirectUrl == null ? "login.jsp" : redirectUrl);
+        response.sendRedirect("login.jsp");
     }
 }

@@ -20,17 +20,18 @@
     <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp">刷卡管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/guashi.jsp" class="active">校园卡管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/chaxunlishiliushui.jsp">查询统计</a></li>
-    <li class="rightLi" style="float: right"><a href="${pageContext.request.contextPath}/logout.do">注销</a></li>
+    <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Student/guashi.jsp" class="active">挂失</a></li>
+    <li><a href="${pageContext.request.contextPath}/Student/chongzhi.jsp">充值</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/xiugaimima.jsp">修改密码</a></li>
 </ul>
 <div class="leftPanel">
 <form action="" method="post" class="form">
     <label>挂失卡号：</label>
     <input type="text" name="card_id"><br>
-    <label>密码：</label>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
     <input type="password" name="password"><br>
     <input type="submit" name="sure" value="确定">
     &nbsp;&nbsp;

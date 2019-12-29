@@ -21,7 +21,7 @@
     <li><a href="${pageContext.request.contextPath}/Admin/shuakajizengshanchagai.jsp">刷卡机管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Admin/banka.jsp">办卡中心</a></li>
     <li><a href="${pageContext.request.contextPath}/Admin/liushuitongji.jsp" class="active">统计报表</a></li>
-    <li class="rightLi" style="float: right"><a href="${pageContext.request.contextPath}/logout.do">注销</a></li>
+    <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Admin/liushuitongji.jsp">流水统计</a></li>
@@ -33,7 +33,7 @@
         <label>卡号：</label>
         <input type="text" name="card_id"><br>
         <label>密码：</label>
-        <input type="password" name="password"><br>
+        <input type="password" name="password"><br><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
