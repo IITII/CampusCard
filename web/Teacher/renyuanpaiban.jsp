@@ -20,7 +20,7 @@
     <li><a href="${pageContext.request.contextPath}/Teacher/renyuanxinxizengshangaicha.jsp" class="active">单位人员管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Teacher/shuakaxiaofei.jsp">收费管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Teacher/liushuichaxun.jsp">统计报表</a></li>
-    <li class="rightLi" style="float: right"><a href="">注销</a></li>
+    <li class="rightLi" style="float: right"><a href="${pageContext.request.contextPath}/logout.do">注销</a></li>
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Teacher/renyuanxinxizengshangaicha.jsp">人员信息增删改查</a></li>
