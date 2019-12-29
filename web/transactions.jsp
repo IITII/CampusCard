@@ -18,7 +18,7 @@
             cardId = Long.parseLong(request.getParameter("card_id"));
             pageNumber = Integer.parseInt(request.getParameter("page_number"));
             pageSize = Integer.parseInt(request.getParameter("page_size"));
-        } catch (NumberFormatException | NullPointerException ignore) {
+        } catch (NullPointerException | NumberFormatException ignore) {
         }
 
         if (cardId != null) {

@@ -4,7 +4,12 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_8.xsd"
              version="8">
 
-    <module id="campus-card-Web"/>
+    <module id="campus-card-Web">
+        <web>
+            <web-uri>web.war</web-uri>
+            <context-root/>
+        </web>
+    </module>
     <module id="campus-card-Web">
         <web>
             <web-uri>web.war</web-uri>
