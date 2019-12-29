@@ -65,7 +65,7 @@ ul.vertical {
     margin: 0;
     padding: 0;
     background-color: #f1f1f1;
-    width: 25%;
+    width: 15%;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -95,7 +95,8 @@ ul.vertical a.active {
 }
 
 .leftPanel {
-    margin-left: 25%;
-    padding: 1px 16px;
+    margin-left: 15%;
+    padding: 12% 16px 1px;
+    text-align: center;
 }
 
