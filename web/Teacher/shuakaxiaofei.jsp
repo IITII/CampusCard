@@ -24,7 +24,7 @@
 <ul class="vertical">
     <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp" class="active">刷卡消费</a></li>
     <li><a href="/campus_card_war_exploded/Teacher/shezhishangxian.jsp">设置用户消费上限</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/liushuichaxun.jsp">禁止异常用户消费</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/jinzhixiaofei.jsp">禁止异常用户消费</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
