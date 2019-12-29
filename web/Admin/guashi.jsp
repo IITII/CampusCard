@@ -34,7 +34,7 @@
 <div class="leftPanel">
     <form action="" method="post" class="form">
         <label>卡号：</label>
-        <input type="text" name="card_id"><br>
+        <input type="text" name="card_id"><br><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

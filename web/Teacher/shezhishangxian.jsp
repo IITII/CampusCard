@@ -29,10 +29,10 @@
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
-        <label>卡号：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
         <input type="text" name="card_id"><br>
         <label>上限金额：</label>
-        <input type="number" name="password"><br>
+        <input type="number" name="password"><br><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

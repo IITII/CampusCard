@@ -35,9 +35,9 @@
     <form action="" method="post" class="form">
         <label>用户ID：</label>
         <input type="text" name="card_id"><br>
-        <label>密码：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
         <input type="password" name="password"><br>
-        <label>卡类型：</label>
+        <label>&nbsp;&nbsp;&nbsp;卡类型：</label>
         <select name="card_type">
             <option>1</option>
         </select>

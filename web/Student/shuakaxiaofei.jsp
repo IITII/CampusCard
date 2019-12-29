@@ -27,12 +27,13 @@
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
-        <label>卡号：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
         <input type="text" name="card_id"><br>
-        <label>密码：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
         <input type="passsword" name="password"><br>
         <label>消费金额：</label>
         <input type="number" name="money"><br>
+        <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

@@ -29,14 +29,15 @@
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
-        <label>卡号：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
         <input type="text" name="card_id"><br>
-        <label>原密码：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原密码：</label>
         <input type="password" name="old_password"><br>
-        <label>新密码：</label>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</label>
         <input type="password" name="new_password1"><br>
         <label>重复新密码：</label>
         <input type="password" name="new_password2"><br>
+        <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

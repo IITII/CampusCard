@@ -33,6 +33,7 @@
         <input type="text" name="card_id"><br>
         <label>充值金额：</label>
         <input type="number" name="money"><br>
+        <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
