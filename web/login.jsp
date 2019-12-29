@@ -16,12 +16,12 @@
             <td><input id="password-input" name="password" type="password" placeholder="请输入密码"/></td>
         </tr>
         <tr>
-            <td><label for="password-input">用户类型：</label></td>
+            <td><label for="userType">用户类型：</label></td>
             <td>
-            <select>
-                <option>学生</option>
-                <option>管理员</option>
-                <option>老师</option>
+            <select name="userType">
+                <option value="1">学生</option>
+                <option value="2">管理员</option>
+                <option value="3">老师</option>
             </select>
             </td>
         </tr>
