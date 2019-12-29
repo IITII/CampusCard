@@ -22,8 +22,8 @@
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
-    <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp">人员信息增删改查</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/shezhishangxian.jsp" class="active">人员排班</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/renyuanxinxizengshangaicha.jsp" class="active">人员信息增删改查</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/renyuanpaiban.jsp">人员排班</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
