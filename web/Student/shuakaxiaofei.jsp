@@ -16,13 +16,13 @@
 <body>
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
-    <li><a href="/campus_card_war_exploded/Student/shuakaxiaofei.jsp" class="active">刷卡管理</a></li>
-    <li><a href="/campus_card_war_exploded/Student/guashi.jsp">校园卡管理</a></li>
-    <li><a href="/campus_card_war_exploded/Student/chaxunlishiliushui.jsp">查询统计</a></li>
+    <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp" class="active">刷卡管理</a></li>
+    <li><a href="${pageContext.request.contextPath}/Student/guashi.jsp">校园卡管理</a></li>
+    <li><a href="${pageContext.request.contextPath}/Student/chaxunlishiliushui.jsp">查询统计</a></li>
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
-    <li><a href="/campus_card_war_exploded/Student/shuakaxiaofei.jsp" class="active">刷卡消费</a></li>
+    <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp" class="active">刷卡消费</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
