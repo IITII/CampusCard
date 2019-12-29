@@ -1,0 +1,90 @@
+ul.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.horizontal li {
+    float: left;
+    padding: 0;
+    margin: 0;
+    background-image:none;
+}
+
+ul.horizontal li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.horizontal li a:hover:not(.active) {
+    background-color: #000;
+}
+
+ul.horizontal li a.active {
+    background-color:#4CAF50;
+}
+ul.gray {
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+ul.gray li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.gray li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+ul.gray li a.active {
+    color: white;
+    background-color: #008CBA;
+}
+.rightLi {
+    float:right;
+}
+.d_line{
+    text-decoration:none;
+    font-size: 30px;
+}
+ul.vertical {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    width: 25%;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+ul.vertical li{
+    padding: 0;
+    margin: 0;
+    background-image:none;
+}
+ul.vertical li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+ul.vertical li a:hover:not(.active) {
+    background-color: #555;
+    color:white;
+}
+
+ul.vertical a.active {
+    background-color: #4CAF50;
+    color:white;
+}
+
