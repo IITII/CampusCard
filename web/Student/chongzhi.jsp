@@ -29,12 +29,12 @@
 <div class="leftPanel">
     <form action="" method="post" class="form">
         <label>充值卡号：</label>
-        <input type="input" name="card_id"><br>
+        <input type="text" name="card_id"><br>
         <label>充值金额：</label>
-        <input type="input" name="money"><br>
+        <input type="text" name="money"><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
-        <input type="reset" name="cancle" value="取消">
+        <input type="reset" name="cancel" value="取消">
     </form>
 </div>
 </body>

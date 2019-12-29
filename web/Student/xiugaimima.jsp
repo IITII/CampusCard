@@ -29,7 +29,7 @@
 <div class="leftPanel">
     <form action="" method="post" class="form">
         <label>卡号：</label>
-        <input type="input" name="card_id"><br>
+        <input type="text" name="card_id"><br>
         <label>原密码：</label>
         <input type="password" name="old_password"><br>
         <label>新密码：</label>
@@ -38,7 +38,7 @@
         <input type="password" name="new_password2"><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
-        <input type="reset" name="cancle" value="取消">
+        <input type="reset" name="cancel" value="取消">
     </form>
 </div>
 </body>
