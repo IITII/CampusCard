@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="root@10.1.79.11" uuid="69903514-1059-4f87-9ca5-83a6dfb86167">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://10.1.79.11:3306/</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="campus_card" uuid="c907af51-9e8a-4327-8db0-872d9628fd97">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://10.1.79.11:3306/campus_card</jdbc-url>
+    </data-source>
+  </component>
+</project>
