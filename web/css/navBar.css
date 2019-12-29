@@ -10,7 +10,7 @@ ul.horizontal li {
     float: left;
     padding: 0;
     margin: 0;
-    background-image:none;
+    background-image: none;
 }
 
 ul.horizontal li a {
@@ -26,8 +26,9 @@ ul.horizontal li a:hover:not(.active) {
 }
 
 ul.horizontal li a.active {
-    background-color:#4CAF50;
+    background-color: #4CAF50;
 }
+
 ul.gray {
     border: 1px solid #e7e7e7;
     background-color: #f3f3f3;
@@ -49,13 +50,16 @@ ul.gray li a.active {
     color: white;
     background-color: #008CBA;
 }
+
 .rightLi {
-    float:right;
+    float: right;
 }
-.d_line{
-    text-decoration:none;
+
+.d_line {
+    text-decoration: none;
     font-size: 30px;
 }
+
 ul.vertical {
     list-style-type: none;
     margin: 0;
@@ -66,11 +70,13 @@ ul.vertical {
     height: 100%;
     overflow: auto;
 }
-ul.vertical li{
+
+ul.vertical li {
     padding: 0;
     margin: 0;
-    background-image:none;
+    background-image: none;
 }
+
 ul.vertical li a {
     display: block;
     color: #000;
@@ -80,11 +86,16 @@ ul.vertical li a {
 
 ul.vertical li a:hover:not(.active) {
     background-color: #555;
-    color:white;
+    color: white;
 }
 
 ul.vertical a.active {
-    background-color: #4CAF50;
-    color:white;
+    background-color: #008CBA;
+    color: white;
+}
+
+.leftPanel {
+    margin-left: 25%;
+    padding: 1px 16px;
 }
 
