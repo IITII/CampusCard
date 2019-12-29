@@ -16,14 +16,14 @@
 <body>
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/renyuanxinxizengshangaicha.jsp">单位人员管理</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp">收费管理</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/liushuichaxun.jsp" class="active">统计报表</a></li>
+    <li><a href="${pageContext.request.contextPath}/Teacher/renyuanxinxizengshangaicha.jsp">单位人员管理</a></li>
+    <li><a href="${pageContext.request.contextPath}/Teacher/shuakaxiaofei.jsp">收费管理</a></li>
+    <li><a href="${pageContext.request.contextPath}/Teacher/liushuichaxun.jsp" class="active">统计报表</a></li>
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
-    <li><a href="/campus_card_war_exploded/Teacher/liushuichaxun.jsp">流水查询</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/baobiaoshengcheng.jsp" class="active">报表生成</a></li>
+    <li><a href="${pageContext.request.contextPath}/Teacher/liushuichaxun.jsp">流水查询</a></li>
+    <li><a href="${pageContext.request.contextPath}/Teacher/baobiaoshengcheng.jsp" class="active">报表生成</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
