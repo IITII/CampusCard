@@ -18,6 +18,7 @@ public class TransferServlet extends HttpServlet {
         Dao dao = Dao.getInstance();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        String redirectUrl = request.getParameter("redirect");
         if (user != null) {
             long fromCardId = 0, toCardId = 0;
             float amount = 0;
@@ -61,6 +62,6 @@ public class TransferServlet extends HttpServlet {
         else {
             session.setAttribute("error", "会话过期，请重新登录");
         }
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(redirectUrl == null ? "login.jsp" : redirectUrl);
     }
 }

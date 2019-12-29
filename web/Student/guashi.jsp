@@ -24,7 +24,6 @@
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Student/guashi.jsp" class="active">挂失</a></li>
-    <li><a href="${pageContext.request.contextPath}/Student/chongzhi.jsp">充值</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/xiugaimima.jsp">修改密码</a></li>
 </ul>
 <div class="leftPanel">
