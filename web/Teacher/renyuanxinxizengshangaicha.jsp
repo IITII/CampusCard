@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
-  Time: 3:35 下午
+  Time: 3:36 下午
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,15 +16,14 @@
 <body>
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/renyuanxinxizengshangaicha.jsp">单位人员管理</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp" class="active">收费管理</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/liushuichaxun.jsp">统计报表</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/renyuanxinxizengshangaicha.jsp" class="active">单位人员管理</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp">收费管理</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/chaxunlishiliushui.jsp">统计报表</a></li>
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
-    <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp" class="active">刷卡消费</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/shezhishangxian.jsp">设置用户消费上限</a></li>
-    <li><a href="/campus_card_war_exploded/Teacher/liushuichaxun.jsp">禁止异常用户消费</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp">人员信息增删改查</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/shezhishangxian.jsp" class="active">人员排班</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">

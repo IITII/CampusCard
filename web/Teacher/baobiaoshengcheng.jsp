@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>刷卡管理</title>
+    <title>报表生成</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
@@ -16,13 +16,14 @@
 <body>
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
-    <li><a href="/campus_card_war_exploded/Student/shuakaxiaofei.jsp">刷卡管理</a></li>
-    <li><a href="/campus_card_war_exploded/Student/guashi.jsp">校园卡管理</a></li>
-    <li><a href="/campus_card_war_exploded/Student/chaxunlishiliushui.jsp" class="active">查询统计</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/renyuanxinxizengshangaicha.jsp">单位人员管理</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/shuakaxiaofei.jsp">收费管理</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/liushuichaxun.jsp" class="active">统计报表</a></li>
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
-    <li><a href="/campus_card_war_exploded/Student/guashi.jsp" class="active">查询历史流水</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/liushuichaxun.jsp">流水查询</a></li>
+    <li><a href="/campus_card_war_exploded/Teacher/baobiaoshengcheng.jsp" class="active">报表生成</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
