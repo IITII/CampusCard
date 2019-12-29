@@ -28,6 +28,7 @@
     <li><a href="${pageContext.request.contextPath}/Admin/piliangdaoruxiaofeijilu.jsp" class="active">批量导入消费记录</a></li>
 </ul>
 <div class="leftPanel">
+    <label>ERROR</label>
     <form action="" method="post" class="form">
         <label>卡号：</label>
         <input type="text" name="card_id"><br>

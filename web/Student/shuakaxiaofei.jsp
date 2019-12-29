@@ -31,7 +31,7 @@
         <label>密码：</label>
         <input type="passsword" name="password"><br>
         <label>消费金额：</label>
-        <input type="text" name="money"><br>
+        <input type="number" name="money"><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

@@ -27,6 +27,7 @@
     <li><a href="${pageContext.request.contextPath}/Admin/baobiaoshengcheng.jsp">报表生成</a></li>
 </ul>
 <div class="leftPanel">
+    <label>ERROR</label>
     <form action="" method="post" class="form">
         <label>卡号：</label>
         <input type="text" name="card_id"><br>

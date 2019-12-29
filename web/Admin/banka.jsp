@@ -32,10 +32,14 @@
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
-        <label>卡号：</label>
+        <label>用户ID：</label>
         <input type="text" name="card_id"><br>
         <label>密码：</label>
         <input type="password" name="password"><br>
+        <label>卡类型：</label>
+        <select name="card_type">
+            <option>1</option>
+        </select>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
