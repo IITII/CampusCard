@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/tableCenter.css">
 </head>
 <body>
+<div class="background"></div>
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
     <li><a href="${pageContext.request.contextPath}/Teacher/renyuanxinxizengshangaicha.jsp" class="active">单位人员管理</a></li>

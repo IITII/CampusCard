@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/tableCenter.css">
 </head>
 <body>
+<div class="background1"></div>
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp" class="active">刷卡管理</a></li>

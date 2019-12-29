@@ -1,8 +1,12 @@
-td,th,.centers {
+td, th, .centers {
     text-align: center;
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
     width: 200px;
     height: 40px;
+}
+
+form {
+    transform: scale(1.5, 1.5);
 }
