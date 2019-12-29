@@ -27,18 +27,22 @@
 </ul>
 <div class="leftPanel">
     <form action="${pageContext.request.contextPath}/transfer.do" method="post" class="form">
-        <input
+        <input type="text" name="redirect" value="shuakaxiaofei.jsp" hidden>
+        <input type="text" name="to_card_id" value="0" hidden>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
-        <input type="text" name="card_id"><br>
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
-        <input type="passsword" name="password"><br>
+        <input type="text" name="from_card_id"><br>
         <label>消费金额：</label>
-        <input type="number" name="money"><br>
+        <input type="number" name="amount"><br>
         <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <% String error = (String)session.getAttribute("error");
+        if (error!=null){
+    %>
+    <h3><%=error %></h3>
+    <%}%>
 </div>
 </body>
 </html>

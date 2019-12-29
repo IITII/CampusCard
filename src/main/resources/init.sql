@@ -46,3 +46,18 @@ create view user_view as
 
 create view card_view as
     select card.id, user_id, type, name as type_name, enabled, balance, daily_limit from card left join card_type on type = card_type.id;
+
+insert into user (type, username, password) VALUES (1,'student1','123');
+insert into user (type, username, password) VALUES (1,'student2','123');
+insert into user (type, username, password) VALUES (2,'admin','123');
+insert into user (type, username, password) VALUES (3,'teacher','123');
+
+insert into card (type, user_id) VALUES (1,1);
+insert into card (type, user_id) VALUES (1,2);
+insert into card (type, user_id) VALUES (1,3);
+insert into card (type, user_id) VALUES (1,4);
+
+insert into transaction (from_card_id, to_card_id, amount) VALUES (0,2,50);
+insert into transaction (from_card_id, to_card_id, amount) VALUES (1,3,50);
+
+insert into card_type (id, name) VALUES (1,'正式卡');
