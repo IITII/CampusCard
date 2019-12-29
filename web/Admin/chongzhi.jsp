@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
-  Time: 4:49 下午
+  Time: 4:57 下午
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>对单位信息增删改查</title>
+    <title>充值</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
@@ -16,14 +16,19 @@
 <body>
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
-    <li><a href="${pageContext.request.contextPath}/Admin/danweizengshangaicha.jsp" class="active">单位管理</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/danweizengshangaicha.jsp">单位管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Admin/shuakajizengshanchagai.jsp">刷卡机管理</a></li>
-    <li><a href="${pageContext.request.contextPath}/Admin/banka.jsp">办卡中心</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/banka.jsp" class="active">办卡中心</a></li>
     <li><a href="${pageContext.request.contextPath}/Admin/liushuitongji.jsp">统计报表</a></li>
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
-    <li><a href="${pageContext.request.contextPath}/Admin/danweizengshangaicha.jsp" class="active">对单位信息增删改查</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/banka.jsp">办卡</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/guashi.jsp">挂失</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/dongjie.jsp">冻结</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/huifu.jsp">恢复</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/chongzhi.jsp" class="active">充值</a></li>
+    <li><a href="${pageContext.request.contextPath}/Admin/buzhufafang.jsp">补助发放</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
