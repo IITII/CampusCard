@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>报表生成</title>
+    <title>流水查询</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
@@ -26,6 +26,7 @@
     <li><a href="${pageContext.request.contextPath}/Teacher/baobiaoshengcheng.jsp">报表生成</a></li>
 </ul>
 <div class="leftPanel">
+    <text>ERROR</text>
     <form action="" method="post" class="form">
         <label>卡号：</label>
         <input type="text" name="card_id"><br>

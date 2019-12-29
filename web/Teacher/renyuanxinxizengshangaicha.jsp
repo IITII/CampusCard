@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>报表生成</title>
+    <title>人员信息增删改查</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
@@ -26,6 +26,7 @@
     <li><a href="${pageContext.request.contextPath}/Teacher/renyuanpaiban.jsp">人员排班</a></li>
 </ul>
 <div class="leftPanel">
+    <text>ERROR</text>
     <form action="" method="post" class="form">
         <label>卡号：</label>
         <input type="text" name="card_id"><br>

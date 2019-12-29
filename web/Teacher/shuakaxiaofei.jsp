@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>报表生成</title>
+    <title>刷卡消费</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
