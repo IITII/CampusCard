@@ -17,14 +17,14 @@
 <ul class="horizontal gray">
     <li><a href="">校园一卡通</a></li>
     <li><a href="shuakaxiaofei.jsp" class="active">刷卡管理</a></li>
-    <li><a href="guashi">校园卡管理</a></li>
+    <li><a href="guashi.jsp">校园卡管理</a></li>
     <li><a href="chaxunlishiliushui.jsp">查询统计</a></li>
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
     <li><a href="shuakaxiaofei.jsp" class="active">刷卡消费</a></li>
 </ul>
-<div>
+<div class="leftPanel">
     <form action="" method="post" class="form">
         <label>消费金额：</label>
         <input type="input" name="money">

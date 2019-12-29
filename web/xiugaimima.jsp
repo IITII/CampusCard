@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
-  Time: 2:39 下午
+  Time: 2:48 下午
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -22,20 +22,24 @@
     <li class="rightLi" style="float: right"><a href="">注销</a></li>
 </ul>
 <ul class="vertical">
-    <li><a href="guashi.jsp" class="active">挂失</a></li>
+    <li><a href="guashi.jsp">挂失</a></li>
     <li><a href="chongzhi.jsp">充值</a></li>
-    <li><a href="xiugaimima.jsp">修改密码</a></li>
+    <li><a href="xiugaimima.jsp" class="active">修改密码</a></li>
 </ul>
 <div class="leftPanel">
-<form action="" method="post" class="form">
-    <label>挂失卡号：</label>
-    <input type="input" name="card_id"><br>
-    <label>密码：</label>
-    <input type="password" name="password"><br>
-    <input type="submit" name="sure" value="确定">
-    &nbsp;&nbsp;
-    <input type="reset" name="cancle" value="取消">
-</form>
+    <form action="" method="post" class="form">
+        <label>卡号：</label>
+        <input type="input" name="card_id"><br>
+        <label>原密码：</label>
+        <input type="password" name="old_password"><br>
+        <label>新密码：</label>
+        <input type="password" name="new_password1"><br>
+        <label>重复新密码：</label>
+        <input type="password" name="new_password2"><br>
+        <input type="submit" name="sure" value="确定">
+        &nbsp;&nbsp;
+        <input type="reset" name="cancle" value="取消">
+    </form>
 </div>
 </body>
 </html>
