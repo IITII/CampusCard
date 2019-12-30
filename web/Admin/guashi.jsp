@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zxf
-  Date: 2019/12/29
-  Time: 4:56 下午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,7 +25,8 @@
     <li><a href="${pageContext.request.contextPath}/Admin/buzhufafang.jsp">补助发放</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
+    <form action="${pageContext.request.contextPath}/disable_card.do" method="post" class="form">
+        <input name="redirect" value="guashi.jsp" hidden/>
         <label>卡号：</label>
         <input type="text" name="card_id"><br><br>
         <input type="submit" name="sure" value="确定">

@@ -1,10 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zxf
-  Date: 2019/12/29
-  Time: 4:56 下午
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="cn.edu.nchu.stu.data.model.CardType" %>
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,19 +28,29 @@
     <li><a href="${pageContext.request.contextPath}/Admin/buzhufafang.jsp">补助发放</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
-        <label>用户ID：</label>
-        <input type="text" name="card_id"><br>
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
-        <input type="password" name="password"><br>
+    <form action="${pageContext.request.contextPath}/new_card.do" method="post" class="form">
+        <input name="redirect" value="banka.jsp" hidden>
+        <label>用户名：</label>
+        <input type="text" name="username"><br>
         <label>&nbsp;&nbsp;&nbsp;卡类型：</label>
-        <select name="card_type">
-            <option>1</option>
+        <select name="type">
+            <% for (CardType cardType : Dao.getInstance().findAllCardTypes()) { %>
+            <option value="<%= cardType.getId() %>"><%= cardType.getName() %></option>
+            <% } %>
         </select>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <%  Long cardId = (Long) session.getAttribute("card_id");
+        String error = (String) session.getAttribute("error");
+    %>
+    <% if (error != null) { %>
+    <h3><%= error %></h3>
+    <% } %>
+    <% if (cardId != null) { %>
+    <h3><%= String.format(Locale.getDefault(), "%06d", cardId) %></h3>
+    <% } %>
 </div>
 </body>
 </html>

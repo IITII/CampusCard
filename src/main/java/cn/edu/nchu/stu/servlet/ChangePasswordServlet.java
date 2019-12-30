@@ -16,6 +16,8 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        String redirectUrl = request.getParameter("redirect");
+        redirectUrl = redirectUrl == null ? "index.jsp" : redirectUrl;
         if (user != null) {
             String oldPassword = request.getParameter("old_password");
             String repeatPassword = request.getParameter("repeat_password");
@@ -25,8 +27,6 @@ public class ChangePasswordServlet extends HttpServlet {
                     if (oldPassword.equals(user.getPassword())) {
                         if (newPassword.matches("\\d{6}")) {
                             Dao.getInstance().updatePasswordByUserId(user.getId(), newPassword);
-                            /// TODO: 修改密码成功后跳转页面
-                            response.sendRedirect("index.jsp");
                         }
                         else {
                             session.setAttribute("error", "密码必须为六位数字");
@@ -54,8 +54,9 @@ public class ChangePasswordServlet extends HttpServlet {
         }
         else {
             session.setAttribute("error", "会话过期，请重新登录");
+            response.sendRedirect("login.jsp");
         }
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(redirectUrl);
     }
 }
 

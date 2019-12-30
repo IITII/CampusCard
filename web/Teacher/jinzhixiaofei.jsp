@@ -28,7 +28,8 @@
     <li><a href="${pageContext.request.contextPath}/Teacher/jinzhixiaofei.jsp" class="active">禁止异常用户消费</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
+    <form action="${pageContext.request.contextPath}/disable_card.do" method="post" class="form">
+        <input name="redirect" value="jinzhixiaofei.jsp" hidden/>
         <label>禁止消费卡号：</label>
         <input type="text" name="card_id"><br><br>
         <input type="submit" name="sure" value="确定">

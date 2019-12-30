@@ -29,7 +29,7 @@
     <li><a href="${pageContext.request.contextPath}/Admin/piliangdaoruxiaofeijilu.jsp">批量导入消费记录</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
+    <form action="${pageContext.request.contextPath}/transactions.jsp" method="get" class="form">
         <label>卡号：</label>
         <input type="text" name="card_id"><br><br>
         <input type="submit" name="sure" value="确定">

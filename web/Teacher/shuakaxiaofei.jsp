@@ -28,13 +28,13 @@
     <li><a href="${pageContext.request.contextPath}/Teacher/jinzhixiaofei.jsp">禁止异常用户消费</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
+    <form action="${pageContext.request.contextPath}/transfer.do" method="post" class="form">
+        <input name="redirect" value="xiugaimima.jsp" hidden/>
+        <input name="to_card_id" value="0" hidden/>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
-        <input type="text" name="card_id"><br>
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
-        <input type="passsword" name="password"><br>
+        <input type="number" name="from_card_id"><br>
         <label>消费金额：</label>
-        <input type="number" name="money"><br><br>
+        <input type="number" name="amount"><br><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

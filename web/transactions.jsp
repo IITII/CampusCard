@@ -45,6 +45,8 @@
     }
     else {
         session.setAttribute("error", "会话过期，请重新登录");
+        /// TODO: 显示完成后将错误信息和卡号置空
+        session.setAttribute("error", null);
         response.sendRedirect("login.jsp");
     }
 %>

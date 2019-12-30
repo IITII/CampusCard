@@ -27,11 +27,9 @@
     <li><a href="${pageContext.request.contextPath}/Student/xiugaimima.jsp">修改密码</a></li>
 </ul>
 <div class="leftPanel">
-<form action="" method="post" class="form">
+<form action="${pageContext.request.contextPath}/disable_card.do" method="post" class="form">
     <label>挂失卡号：</label>
-    <input type="text" name="card_id"><br>
-    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</label>
-    <input type="password" name="password"><br>
+    <input type="number" name="card_id"><br>
     <input type="submit" name="sure" value="确定">
     &nbsp;&nbsp;
     <input type="reset" name="cancel" value="取消">

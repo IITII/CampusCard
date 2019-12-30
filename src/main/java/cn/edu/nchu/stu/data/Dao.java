@@ -1,6 +1,7 @@
 package cn.edu.nchu.stu.data;
 
 import cn.edu.nchu.stu.data.model.Card;
+import cn.edu.nchu.stu.data.model.CardType;
 import cn.edu.nchu.stu.data.model.Transaction;
 import cn.edu.nchu.stu.data.model.User;
 
@@ -95,6 +96,21 @@ public class Dao {
             e.printStackTrace();
         }
         return users;
+    }
+
+    public List<CardType> parseCardTypes(ResultSet resultSet) {
+        ArrayList<CardType> types = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                types.add(new CardType(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return types;
     }
 
     public User findUserByUsername(String username) {
@@ -283,5 +299,15 @@ public class Dao {
             }
         }
         return false;
+    }
+
+    public List<CardType> findAllCardTypes() {
+        try {
+            PreparedStatement statement = connection.prepareStatement("select * from card_type");
+            return parseCardTypes(statement.executeQuery());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

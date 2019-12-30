@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.edu.nchu.stu</groupId>
-    <artifactId>campuscard</artifactId>
+    <artifactId>CampusCard</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>

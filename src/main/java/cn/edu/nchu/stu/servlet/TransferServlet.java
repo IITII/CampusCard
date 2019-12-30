@@ -70,7 +70,7 @@ public class TransferServlet extends HttpServlet {
                     session.setAttribute("error", "请输入卡号");
                 }
             }
-            response.sendRedirect("Student/shuakaxiaofei.jsp");
+            response.sendRedirect(redirectUrl);
         }
         else {
             session.setAttribute("error", "会话过期，请重新登录");

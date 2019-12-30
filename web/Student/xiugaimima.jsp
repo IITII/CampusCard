@@ -27,13 +27,14 @@
     <li><a href="${pageContext.request.contextPath}/Student/xiugaimima.jsp" class="active">修改密码</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
+    <form action="${pageContext.request.contextPath}/change_password.do" method="post" class="form">
+        <input name="redirect" value="xiugaimima.jsp" hidden/>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原密码：</label>
         <input type="password" name="old_password"><br>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</label>
-        <input type="password" name="new_password1"><br>
+        <input type="password" name="new_password"><br>
         <label>重复新密码：</label>
-        <input type="password" name="new_password2"><br>
+        <input type="password" name="repeat_password"><br>
         <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
