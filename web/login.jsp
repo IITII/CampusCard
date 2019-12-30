@@ -3,8 +3,10 @@
 <html>
 <head>
     <title>登录</title>
+    <link rel="stylesheet" href="css/image.css"
 </head>
 <body>
+<div class="background"></div>
 <form action="${pageContext.request.contextPath}/login.do" method="post">
     <table>
         <tr>
@@ -16,13 +18,15 @@
             <td><input id="password-input" name="password" type="password" placeholder="请输入密码"/></td>
         </tr>
         <tr>
-            <td><label for="userType">用户类型：</label></td>
+            <td><label>用户类型：</label></td>
             <td>
-            <select name="userType">
-                <option value="1">学生</option>
-                <option value="2">管理员</option>
-                <option value="3">老师</option>
-            </select>
+                <label>
+                    <select name="userType">
+                        <option value="1">学生</option>
+                        <option value="2">管理员</option>
+                        <option value="3">老师</option>
+                    </select>
+                </label>
             </td>
         </tr>
         <tr>

@@ -20,7 +20,7 @@
     <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp" class="active">刷卡管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/guashi.jsp">校园卡管理</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/chaxunlishiliushui.jsp">查询统计</a></li>
-    <li class="rightLi" style="float: right"><a href="">注销</a></li>
+    <li class="rightLi" style="float: right"><a href="${pageContext.request.contextPath}/logout.do">注销</a></li>
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Student/shuakaxiaofei.jsp" class="active">刷卡消费</a></li>
