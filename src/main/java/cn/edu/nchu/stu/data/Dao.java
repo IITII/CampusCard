@@ -121,7 +121,10 @@ public class Dao {
             statement.setLong(1, id);
             List<Card> cards = parseCards(statement.executeQuery());
             assert cards.size() == 1;
-            return cards.get(0);
+            if (cards.size() != 0)
+                return cards.get(0);
+            else
+                return null;
         } catch (SQLException e) {
             e.printStackTrace();
         }

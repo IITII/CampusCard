@@ -27,7 +27,7 @@
 </ul>
 <div class="leftPanel">
     <form action="${pageContext.request.contextPath}/transfer.do" method="post" class="form">
-        <input type="text" name="redirect" value="shuakaxiaofei.jsp" hidden>
+        <input type="text" name="redirect" value="Student/shuakaxiaofei.jsp" hidden>
         <input type="text" name="to_card_id" value="0" hidden>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
         <input type="text" name="from_card_id"><br>

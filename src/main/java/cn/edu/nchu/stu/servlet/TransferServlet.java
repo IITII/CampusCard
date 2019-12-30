@@ -28,19 +28,31 @@ public class TransferServlet extends HttpServlet {
                 amount = Float.parseFloat(request.getParameter("amount"));
             } catch (NumberFormatException | NullPointerException ignore) {
             }
+            try {
+                toCardId = Long.parseLong(request.getParameter("to_card_id"));
+            } catch (NumberFormatException | NullPointerException ignore) {
+            }
+            try {
+                amount = Float.parseFloat(request.getParameter("amount"));
+            } catch (NumberFormatException | NullPointerException ignore) {
+            }
 
             if (fromCardId != 0 || toCardId != 0 && amount != 0) {
                 if (fromCardId == 0) {  /// 存款
                     if (user.getType() == User.ADMINISTRATOR) {
                         dao.transfer(fromCardId, toCardId, amount);
                         response.sendRedirect(redirectUrl == null ? "index.jsp" : redirectUrl);
+                        return;
                     }
                     else {
                         session.setAttribute("error", "权限不足");
                     }
                 } else { /// 取款 / 消费 / 转账
                     Card card = dao.findCardById(fromCardId);
-                    if (card != null && card.getUserId() == user.getId()) {
+                    if (card == null) {
+                        session.setAttribute("error", "卡号输入错误");
+                    }
+                    else if (card.getUserId() == user.getId()) {
                         if (dao.transfer(fromCardId, toCardId, amount)) {
                             response.sendRedirect(redirectUrl == null ? "index.jsp" : redirectUrl);
                         } else {
@@ -58,10 +70,11 @@ public class TransferServlet extends HttpServlet {
                     session.setAttribute("error", "请输入卡号");
                 }
             }
+            response.sendRedirect("Student/shuakaxiaofei.jsp");
         }
         else {
             session.setAttribute("error", "会话过期，请重新登录");
+            response.sendRedirect("login.jsp");
         }
-        response.sendRedirect("login.jsp");
     }
 }
