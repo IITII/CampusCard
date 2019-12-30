@@ -27,6 +27,7 @@ public class DisableCardServlet extends HttpServlet {
                 if (card != null) {
                     if (card.getUserId() == user.getId() || user.getType() == User.ADMINISTRATOR || user.getType() == User.STAFF) {
                         dao.updateEnabledByCardId(cardId, false);
+                        response.sendRedirect(redirectUrl);
                     } else {
                         session.setAttribute("error", "权限不足");
                         response.sendRedirect(redirectUrl);

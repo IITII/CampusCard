@@ -22,15 +22,15 @@ public class ChangePasswordServlet extends HttpServlet {
             String oldPassword = request.getParameter("old_password");
             String repeatPassword = request.getParameter("repeat_password");
             String newPassword = request.getParameter("new_password");
-            if (oldPassword != null && repeatPassword != null & newPassword != null) {
-                if (oldPassword.equals(repeatPassword)) {
+            if (oldPassword != null && repeatPassword != null && newPassword != null) {
+                if (newPassword.equals(repeatPassword)) {
                     if (oldPassword.equals(user.getPassword())) {
-                        if (newPassword.matches("\\d{6}")) {
+                        //if (newPassword.matches("\\d{6}")) {
                             Dao.getInstance().updatePasswordByUserId(user.getId(), newPassword);
-                        }
-                        else {
-                            session.setAttribute("error", "密码必须为六位数字");
-                        }
+                        //}
+                        //else {
+                            //session.setAttribute("error", "密码必须为六位数字");
+                        //}
                     }
                     else {
                         session.setAttribute("error", "旧密码输入错误");

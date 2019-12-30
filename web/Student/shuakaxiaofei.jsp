@@ -31,7 +31,7 @@
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
-    <% String error = (String)session.getAttribute("error");
+    <br><% String error = (String)session.getAttribute("error");
         if (error!=null){
     %>
     <h3><%=error %></h3>

@@ -30,12 +30,12 @@
 <form action="${pageContext.request.contextPath}/disable_card.do" method="post" class="form">
     <input type="text" name="redirect" value="Student/guashi.jsp" hidden>
     <label>挂失卡号：</label>
-    <input type="number" name="card_id"><br>
+    <input type="number" name="card_id"><br><br>
     <input type="submit" name="sure" value="确定">
     &nbsp;&nbsp;
     <input type="reset" name="cancel" value="取消">
 </form>
-    <% String error = (String)session.getAttribute("error");
+    <br><% String error = (String)session.getAttribute("error");
         if (error!=null){
     %>
     <h3><%=error %></h3>

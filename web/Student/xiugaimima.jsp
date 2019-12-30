@@ -28,7 +28,7 @@
 </ul>
 <div class="leftPanel">
     <form action="${pageContext.request.contextPath}/change_password.do" method="post" class="form">
-        <input name="redirect" value="xiugaimima.jsp" hidden/>
+        <input name="redirect" value="Student/xiugaimima.jsp" hidden/>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原密码：</label>
         <input type="password" name="old_password"><br>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</label>
@@ -40,6 +40,11 @@
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <br><% String error = (String)session.getAttribute("error");
+        if (error!=null){
+    %>
+    <h3><%=error %></h3>
+    <%}%>
 </div>
 </body>
 </html>
