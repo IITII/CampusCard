@@ -24,13 +24,10 @@
 </ul>
 <ul class="vertical">
     <li><a href="${pageContext.request.contextPath}/Student/guashi.jsp">挂失</a></li>
-    <li><a href="${pageContext.request.contextPath}/Student/chongzhi.jsp">充值</a></li>
     <li><a href="${pageContext.request.contextPath}/Student/xiugaimima.jsp" class="active">修改密码</a></li>
 </ul>
 <div class="leftPanel">
     <form action="" method="post" class="form">
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
-        <input type="text" name="card_id"><br>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原密码：</label>
         <input type="password" name="old_password"><br>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</label>
