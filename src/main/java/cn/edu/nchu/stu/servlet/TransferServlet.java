@@ -24,8 +24,6 @@ public class TransferServlet extends HttpServlet {
             float amount = 0;
             try {
                 fromCardId = Long.parseLong(request.getParameter("from_card_id"));
-                toCardId = Long.parseLong(request.getParameter("to_card_id"));
-                amount = Float.parseFloat(request.getParameter("amount"));
             } catch (NumberFormatException | NullPointerException ignore) {
             }
             try {
@@ -54,7 +52,6 @@ public class TransferServlet extends HttpServlet {
                     }
                     else if (card.getUserId() == user.getId()) {
                         if (dao.transfer(fromCardId, toCardId, amount)) {
-                            response.sendRedirect(redirectUrl == null ? "index.jsp" : redirectUrl);
                         } else {
                             session.setAttribute("error", "余额不足");
                         }
