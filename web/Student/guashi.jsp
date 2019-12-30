@@ -40,6 +40,7 @@
     %>
     <h3><%=error %></h3>
     <%}%>
+    <% session.setAttribute("error",null); %>
 </div>
 </body>
 </html>

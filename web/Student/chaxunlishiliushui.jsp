@@ -26,16 +26,20 @@
     <li><a href="${pageContext.request.contextPath}/Student/chaxunlishiliushui.jsp" class="active">查询历史流水</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
+    <form action="${pageContext.request.contextPath}/transactions.jsp" method="get" class="form">
         <label>卡号：</label>
         <input type="text" name="card_id"><br>
-        <label>密码：</label>
-        <input type="password" name="password"><br>
         <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <br><% String error = (String)session.getAttribute("error");
+    if (error!=null){
+%>
+    <h3><%=error %></h3>
+    <%}%>
+    <% session.setAttribute("error",null); %>
 </div>
 </body>
 </html>
