@@ -1,4 +1,6 @@
-<%--
+<%@ page import="cn.edu.nchu.stu.data.model.Card" %>
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="cn.edu.nchu.stu.data.model.User" %><%--
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
@@ -7,12 +9,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>设置消费上限</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
 </head>
+
 <body>
 <div class="background"></div>
 <ul class="horizontal gray">
@@ -28,15 +32,34 @@
     <li><a href="${pageContext.request.contextPath}/Teacher/jinzhixiaofei.jsp">禁止异常用户消费</a></li>
 </ul>
 <div class="leftPanel">
-    <form action="" method="post" class="form">
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
-        <input type="text" name="card_id"><br>
-        <label>上限金额：</label>
-        <input type="number" name="password"><br><br>
+    <form action="${pageContext.request.contextPath}/set_daily_limit.do" method="post" class="form">
+        <input type="text" name="redirect" value="Teacher/shezhishangxian.jsp" hidden>
+        <table border="0" style="width: 200px;height: 40px;margin: auto;">
+            <tr>
+                <td style="text-align: right"><label>卡号：</label></td>
+                <td><select name="card_id">
+                    <% for (Card card : Dao.getInstance().findAllCards()){ %>
+                    <option value="<%=String.format("%06d",card.getId())%>"> <%=String.format("%06d",card.getId())%>
+                    </option>
+                    <%}%>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>上限金额：</label></td>
+                <td><input type="number" name="daily_limit"></td>
+            </tr>
+        </table>
+        <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <br><% String error = (String)session.getAttribute("error");
+    if (error!=null){%>
+    <h3><%=error %></h3>
+    <%}%>
+    <% session.setAttribute("error",null); %>
 </div>
 </body>
+
 </html>

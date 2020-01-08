@@ -1,14 +1,18 @@
 <%@ page import="cn.edu.nchu.stu.data.model.CardType" %>
 <%@ page import="cn.edu.nchu.stu.data.Dao" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="cn.edu.nchu.stu.data.model.User" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>办卡</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
 </head>
+
 <body>
 <div class="background2"></div>
 <ul class="horizontal gray">
@@ -28,16 +32,28 @@
     <li><a href="${pageContext.request.contextPath}/Admin/buzhufafang.jsp">补助发放</a></li>
 </ul>
 <div class="leftPanel">
+    <% List<User> userList = Dao.getInstance().findAllUser(); %>
     <form action="${pageContext.request.contextPath}/new_card.do" method="post" class="form">
-        <input name="redirect" value="banka.jsp" hidden>
-        <label>用户名：</label>
-        <input type="text" name="username"><br>
-        <label>&nbsp;&nbsp;&nbsp;卡类型：</label>
-        <select name="type">
-            <% for (CardType cardType : Dao.getInstance().findAllCardTypes()) { %>
-            <option value="<%= cardType.getId() %>"><%= cardType.getName() %></option>
-            <% } %>
-        </select>
+        <input name="redirect" value="Admin/banka.jsp" hidden>
+        <table border="0" style="width: 200px;height: 40px;margin: auto;">
+            <tr>
+                <td style="text-align: right"><label>用户id：</label></td>
+                <td><select name="user_id">
+                    <% for (User user : userList) { %>
+                    <option value="<%= user.getId() %>"><%= user.getUsername() %></option>
+                    <% } %>
+                </select></td>
+            </tr>
+            <tr>
+                <td style="text-align: right"><label>卡类型：</label></td>
+                <td><select name="type">
+                    <% for (CardType cardType : Dao.getInstance().findAllCardTypes()) { %>
+                    <option value="<%= cardType.getId() %>"><%= cardType.getName() %></option>
+                    <% } %>
+                </select></td>
+            </tr>
+        </table>
+        <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
@@ -47,10 +63,12 @@
     %>
     <% if (error != null) { %>
     <h3><%= error %></h3>
+    <% session.setAttribute("error",null); %>
     <% } %>
     <% if (cardId != null) { %>
     <h3><%= String.format(Locale.getDefault(), "%06d", cardId) %></h3>
-    <% } %>
+    <% session.setAttribute("card_id", null); } %>
 </div>
 </body>
+
 </html>

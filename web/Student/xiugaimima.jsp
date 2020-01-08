@@ -7,12 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>修改密码</title>
     <link rel="stylesheet" href="../css/image.css">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="../css/tableCenter.css">
 </head>
+
 <body>
 <div class="background1"></div>
 <ul class="horizontal gray">
@@ -28,24 +30,32 @@
 </ul>
 <div class="leftPanel">
     <form action="${pageContext.request.contextPath}/change_password.do" method="post" class="form">
-        <input name="redirect" value="Student/xiugaimima.jsp" hidden/>
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原密码：</label>
-        <input type="password" name="old_password"><br>
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</label>
-        <input type="password" name="new_password"><br>
-        <label>重复新密码：</label>
-        <input type="password" name="repeat_password"><br>
+        <input name="redirect" value="Student/xiugaimima.jsp" hidden />
+        <table border="0" style="width: 200px;height: 40px;margin: auto;">
+            <tr>
+                <td style="text-align: right"><label>原密码：</label></td>
+                <td><input type="password" name="old_password"><br></td>
+            </tr>
+            <tr>
+                <td style="text-align: right"><label>新密码：</label></td>
+                <td><input type="password" name="new_password"><br></td>
+            </tr>
+            <tr>
+                <td style="text-align: right"><label>重复新密码：</label></td>
+                <td><input type="password" name="repeat_password"><br></td>
+            </tr>
+        </table>
         <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
     <br><% String error = (String)session.getAttribute("error");
-        if (error!=null){
-    %>
+    if (error!=null){%>
     <h3><%=error %></h3>
     <%}%>
     <% session.setAttribute("error",null); %>
 </div>
 </body>
+
 </html>

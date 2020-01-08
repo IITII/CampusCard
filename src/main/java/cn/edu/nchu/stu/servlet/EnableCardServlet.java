@@ -15,6 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "EnableCardServlet", displayName = "EnableCard", urlPatterns = "/enable_card.do")
 public class EnableCardServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Dao dao = Dao.getInstance();
         User user = (User) session.getAttribute("user");
@@ -22,11 +23,26 @@ public class EnableCardServlet extends HttpServlet {
             String redirectUrl = request.getParameter("redirect");
             redirectUrl = redirectUrl == null ? "index.jsp" : redirectUrl;
             try {
-                Long cardId = Long.parseLong(request.getParameter("card_id"));
+                String card_id = request.getParameter("card_id");
+                if (card_id != null && card_id.length() != 6) {
+                    session.setAttribute("error", "请输入6位数字的卡号");
+                    response.sendRedirect(redirectUrl);
+                    return;
+                }
+                for (int i = 0; i < card_id.length(); i++) {
+                    if (!Character.isDigit(card_id.charAt(i))) {
+                        session.setAttribute("error", "请输入6位数字的卡号");
+                        response.sendRedirect(redirectUrl);
+                        return;
+                    }
+                }
+                Long cardId = Long.parseLong(card_id);
                 Card card = dao.findCardById(cardId);
                 if (card != null) {
                     if (user.getType() == User.ADMINISTRATOR) {
                         dao.updateEnabledByCardId(cardId, true);
+                        session.setAttribute("error", "恢复成功");
+                        response.sendRedirect(redirectUrl);
                     } else {
                         session.setAttribute("error", "权限不足");
                         response.sendRedirect(redirectUrl);

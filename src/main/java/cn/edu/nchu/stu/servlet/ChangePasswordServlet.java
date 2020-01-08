@@ -14,6 +14,7 @@ import java.io.IOException;
 @WebServlet(name = "ChangePasswordServlet", displayName = "Change Password", urlPatterns = "/change_password.do")
 public class ChangePasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         String redirectUrl = request.getParameter("redirect");
@@ -25,8 +26,15 @@ public class ChangePasswordServlet extends HttpServlet {
             if (oldPassword != null && repeatPassword != null && newPassword != null) {
                 if (newPassword.equals(repeatPassword)) {
                     if (oldPassword.equals(user.getPassword())) {
+                        if (newPassword.equals("")){
+                            session.setAttribute("error", "请输入新密码");
+                            response.sendRedirect(redirectUrl);
+                            return;
+                        }
                         //if (newPassword.matches("\\d{6}")) {
                             Dao.getInstance().updatePasswordByUserId(user.getId(), newPassword);
+                            session.setAttribute("user", Dao.getInstance().findUserById(user.getId()));
+                            session.setAttribute("error", "密码修改成功");
                         //}
                         //else {
                             //session.setAttribute("error", "密码必须为六位数字");
@@ -45,7 +53,7 @@ public class ChangePasswordServlet extends HttpServlet {
                     session.setAttribute("error", "请输入旧密码");
                 }
                 else if (repeatPassword == null) {
-                    session.setAttribute("error", "请再次输入旧密码");
+                    session.setAttribute("error", "请再次输入新密码");
                 }
                 else {
                     session.setAttribute("error", "请输入新密码");

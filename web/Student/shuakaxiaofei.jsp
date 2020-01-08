@@ -1,3 +1,7 @@
+<%@ page import="cn.edu.nchu.stu.data.model.Pos" %>
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="cn.edu.nchu.stu.data.model.Card" %>
+<%@ page import="cn.edu.nchu.stu.data.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,18 +26,39 @@
     <form action="${pageContext.request.contextPath}/transfer.do" method="post" class="form">
         <input type="text" name="redirect" value="Student/shuakaxiaofei.jsp" hidden>
         <input type="text" name="to_card_id" value="0" hidden>
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卡号：</label>
-        <input type="text" name="from_card_id"><br>
-        <label>消费金额：</label>
-        <input type="number" name="amount"><br>
+        <table border="0" style="width: 200px;height: 40px;margin: auto;">
+            <tr>
+                <td style="text-align: right;"><label>卡号：</label></td>
+                <td>
+                    <select name="from_card_id">
+                        <% for (Card card : Dao.getInstance().findCardsByUserId(((User)session.getAttribute("user")).getId())){ %>
+                        <option value="<%=String.format("%06d",card.getId())%>"> <%=String.format("%06d",card.getId())%> </option>
+                        <%}%>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;"><label>消费金额：</label></td>
+                <td><input type="number" name="amount"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right;"><label>pos机：</label></td>
+                <td>
+                    <select name="pos_id">
+                        <% for (Pos pos : Dao.getInstance().findAllPoses()) { %>
+                        <option value="<%= pos.getId()%>"><%=pos.getName()%></option>
+                        <%}%>
+                    </select>
+                </td>
+            </tr>
+        </table>
         <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
     <br><% String error = (String)session.getAttribute("error");
-        if (error!=null){
-    %>
+    if (error!=null){%>
     <h3><%=error %></h3>
     <%}%>
     <% session.setAttribute("error",null); %>

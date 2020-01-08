@@ -1,4 +1,6 @@
-<%--
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="cn.edu.nchu.stu.data.model.Card" %>
+<%@ page import="cn.edu.nchu.stu.data.model.User" %><%--
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
@@ -27,9 +29,13 @@
 </ul>
 <div class="leftPanel">
     <form action="${pageContext.request.contextPath}/transactions.jsp" method="get" class="form">
+        <input type="text" name="redirect" value="Student/chaxunlishiliushui.jsp" hidden>
         <label>卡号：</label>
-        <input type="text" name="card_id"><br>
-        <br>
+        <select name="card_id">
+            <% for (Card card : Dao.getInstance().findCardsByUserId(((User)session.getAttribute("user")).getId())){ %>
+            <option value="<%=String.format("%06d",card.getId())%>"> <%=String.format("%06d",card.getId())%> </option>
+            <%}%>
+        </select><br><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">

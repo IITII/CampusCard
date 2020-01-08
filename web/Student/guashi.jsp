@@ -1,4 +1,6 @@
-<%--
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="cn.edu.nchu.stu.data.model.Card" %>
+<%@ page import="cn.edu.nchu.stu.data.model.User" %><%--
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
@@ -30,7 +32,11 @@
 <form action="${pageContext.request.contextPath}/disable_card.do" method="post" class="form">
     <input type="text" name="redirect" value="Student/guashi.jsp" hidden>
     <label>挂失卡号：</label>
-    <input type="number" name="card_id"><br><br>
+    <select name="card_id">
+        <% for (Card card : Dao.getInstance().findCardsByUserId(((User)session.getAttribute("user")).getId())){ %>
+        <option value="<%=String.format("%06d",card.getId())%>"> <%=String.format("%06d",card.getId())%> </option>
+        <%}%>
+    </select><br><br>
     <input type="submit" name="sure" value="确定">
     &nbsp;&nbsp;
     <input type="reset" name="cancel" value="取消">

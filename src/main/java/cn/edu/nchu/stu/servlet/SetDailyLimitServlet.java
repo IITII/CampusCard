@@ -17,6 +17,7 @@ public class SetDailyLimitServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Dao dao = Dao.getInstance();
         User user = (User) session.getAttribute("user");
@@ -30,8 +31,9 @@ public class SetDailyLimitServlet extends HttpServlet {
                 float dailyLimit = Float.parseFloat(dailyLimitText);
                 Card card = dao.findCardById(cardId);
                 if (card != null) {
-                    if (card.getUserId() == user.getId() || user.getType() == User.ADMINISTRATOR) {
+                    if (card.getUserId() == user.getId() || user.getType() == User.ADMINISTRATOR || user.getType() == User.STAFF) {
                         dao.updateDailyLimit(cardId, dailyLimit);
+                        session.setAttribute("error", "设置成功");
                     } else {
                         session.setAttribute("error", "权限不足");
                     }

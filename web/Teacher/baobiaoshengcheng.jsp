@@ -1,4 +1,6 @@
-<%--
+<%@ page import="cn.edu.nchu.stu.data.model.Pos" %>
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="cn.edu.nchu.stu.data.model.User" %><%--
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
@@ -27,17 +29,26 @@
     <li><a href="${pageContext.request.contextPath}/Teacher/baobiaoshengcheng.jsp" class="active">报表生成</a></li>
 </ul>
 <div class="leftPanel">
-    <text>ERROR</text>
-    <form action="" method="post" class="form">
-        <label>卡号：</label>
-        <input type="text" name="card_id"><br>
-        <label>密码：</label>
-        <input type="password" name="password"><br>
-        <br>
+    <form action="${pageContext.request.contextPath}/generate_csv.do" method="post" class="form">
+        <input hidden name="redirect" value="Teacher/baobiaoshengcheng.jsp" />
+        <label>刷卡机：</label>
+        <select name="post_id">
+            <% for (Pos pos : Dao.getInstance().findPosesOfDepartmentOfUserByUserId( ((User)session.getAttribute("user")).getId() )){ %>
+            <option value="<%=pos.getId()%>"> <%=pos.getAddress()%> </option>
+            <%}%>
+            <option value="">本单位所有刷卡机</option>
+        </select><br><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <div>
+        <% String error = (String) session.getAttribute("error"); %>
+        <% if (error != null) { %>
+        <h3><%= error %></h3>
+        <% } %>
+        <% session.setAttribute("error",null); %>
+    </div>
 </div>
 </body>
 </html>

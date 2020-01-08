@@ -15,6 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "LoginServlet", displayName = "Login", urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Dao dao = Dao.getInstance();
         String username = request.getParameter("username");
@@ -28,14 +29,16 @@ public class LoginServlet extends HttpServlet {
         else {
             User user = dao.findUserByUsername(username);
             if (user != null) {
-                session.setAttribute("user", user);
-                if (user.getType()==User.ADMINISTRATOR)
-                    response.sendRedirect("Admin/danweizengshangaicha.jsp");
-                else if (user.getType()==User.STAFF)
-                    response.sendRedirect("Teacher/renyuanxinxizengshangaicha.jsp");
-                else
-                    response.sendRedirect("Student/shuakaxiaofei.jsp");
-                return;
+                if (user.getPassword().equals(password)) {
+                    session.setAttribute("user", user);
+                    if (user.getType() == User.ADMINISTRATOR)
+                        response.sendRedirect("Admin/danweizengshangaicha.jsp");
+                    else if (user.getType() == User.STAFF)
+                        response.sendRedirect("Teacher/renyuanxinxizengshangaicha.jsp");
+                    else
+                        response.sendRedirect("Student/shuakaxiaofei.jsp");
+                    return;
+                }
             }
         }
         session.setAttribute("error", "用户名或密码错误");

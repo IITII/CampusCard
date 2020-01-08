@@ -1,4 +1,5 @@
-<%--
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="cn.edu.nchu.stu.data.model.Card" %><%--
   Created by IntelliJ IDEA.
   User: zxf
   Date: 2019/12/29
@@ -28,16 +29,27 @@
     <li><a href="${pageContext.request.contextPath}/Admin/baobiaoshengcheng.jsp" class="active">报表生成</a></li>
 </ul>
 <div class="leftPanel">
-    <label>ERROR</label>
-    <form action="" method="post" class="form">
+    <form action="${pageContext.request.contextPath}/generate_csv.do" method="post" class="form">
+        <input hidden name="redirect" value="Admin/baobiaoshengcheng.jsp" />
         <label>卡号：</label>
-        <input type="text" name="card_id"><br>
-        <label>密码：</label>
-        <input type="password" name="password"><br><br>
+        <select name="card_id">
+            <% for (Card card : Dao.getInstance().findAllCards()){ %>
+            <option value="<%=String.format("%06d",card.getId())%>"> <%=String.format("%06d",card.getId())%> </option>
+            <%}%>
+            <option value=""> 所有卡 </option>
+        </select><br>
+        <br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <br><div>
+        <% String error = (String) session.getAttribute("error"); %>
+        <% if (error != null) { %>
+        <h3><%= error %></h3>
+        <% } %>
+    <% session.setAttribute("error",null); %>
+    </div>
 </div>
 </body>
 </html>

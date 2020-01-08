@@ -1,3 +1,6 @@
+<%@ page import="cn.edu.nchu.stu.data.Dao" %>
+<%@ page import="cn.edu.nchu.stu.data.model.Card" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -25,14 +28,24 @@
     <li><a href="${pageContext.request.contextPath}/Admin/buzhufafang.jsp">补助发放</a></li>
 </ul>
 <div class="leftPanel">
+    <% List<Card> cardList = Dao.getInstance().findAllCards(); %>
     <form action="${pageContext.request.contextPath}/disable_card.do" method="post" class="form">
-        <input name="redirect" value="guashi.jsp" hidden/>
+        <input name="redirect" value="Admin/guashi.jsp" hidden>
         <label>卡号：</label>
-        <input type="text" name="card_id"><br><br>
+        <select name="card_id">
+            <% for (Card card : cardList){ %>
+            <option value="<%= String.format("%06d",card.getId()) %>"><%= String.format("%06d",card.getId()) %></option>
+            <% } %>
+        </select><br><br>
         <input type="submit" name="sure" value="确定">
         &nbsp;&nbsp;
         <input type="reset" name="cancel" value="取消">
     </form>
+    <br><% String error = (String)session.getAttribute("error");
+    if (error!=null){%>
+    <h3><%=error %></h3>
+    <%}%>
+    <% session.setAttribute("error",null); %>
 </div>
 </body>
 </html>

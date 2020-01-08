@@ -3,89 +3,133 @@
 <%@ page import="cn.edu.nchu.stu.data.model.User" %>
 <%@ page import="cn.edu.nchu.stu.data.model.Transaction" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%
     User user = (User) session.getAttribute("user");
-    List<Transaction> transactions = new ArrayList<>();
+    String redirectUrl = request.getParameter("redirect");
+    redirectUrl = redirectUrl == null ? "index.jsp" : redirectUrl;
+    List<Transaction> transactions = null;
     int size = 0;
     Long cardId = null;
     Integer pageNumber = null, pageSize = null;
     if (user != null) {
         try {
-            cardId = Long.parseLong(request.getParameter("card_id"));
+            String card_id = request.getParameter("card_id");
+            cardId = Long.parseLong(card_id);
+        } catch (NullPointerException | NumberFormatException ignore) {
+        }
+        try {
             pageNumber = Integer.parseInt(request.getParameter("page_number"));
+        } catch (NullPointerException | NumberFormatException ignore) {
+        }
+        try {
             pageSize = Integer.parseInt(request.getParameter("page_size"));
         } catch (NullPointerException | NumberFormatException ignore) {
         }
 
+        Dao dao = Dao.getInstance();
+        pageNumber = pageNumber == null ? 1 : pageNumber;
+        pageSize = pageSize == null ? 10 : pageSize;
         if (cardId != null) {
-            Dao dao = Dao.getInstance();
             Card card = dao.findCardById(cardId);
             if (card != null) {
                 if (card.getUserId() == user.getId() || user.getType() == User.ADMINISTRATOR) {
+                    transactions = dao.findTransactionsByCardId(cardId, pageNumber, pageSize);
                     size = dao.countTransactionsByCardId(cardId);
-                    if (pageNumber == null || pageSize == null || pageSize == 0) {
-                        transactions = dao.findTransactionsByCardId(cardId);
-                    } else {
-                        transactions = dao.findTransactionsByCardId(cardId, pageNumber, pageSize);
-                    }
-                }
-                else {
+                } else {
                     session.setAttribute("error", "权限不足");
+                    response.sendRedirect(redirectUrl);
                 }
             } else {
                 session.setAttribute("error", "找不到卡号");
+                response.sendRedirect(redirectUrl);
             }
         } else {
-            session.setAttribute("error", "卡号为空");
+            if (user.getType() == User.ADMINISTRATOR) {
+                transactions = dao.findAllTransactions(pageNumber, pageSize);
+                size = dao.countTransactions();
+            } else {
+                session.setAttribute("error", "卡号为空");
+                response.sendRedirect(redirectUrl);
+                return;
+            }
         }
     }
     else {
         session.setAttribute("error", "会话过期，请重新登录");
-        /// TODO: 显示完成后将错误信息和卡号置空
-        session.setAttribute("error", null);
         response.sendRedirect("login.jsp");
+        return;
     }
+    assert transactions != null;
 %>
 
 <html>
 <head>
     <title>交易记录</title>
+    <link rel="stylesheet" href="css/image.css">
+    <script src="js/form.js"></script>
+    <style>
+        div {
+            text-align: center;
+            align-content: center;
+
+        }
+        td, th, .centers {
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 200px;
+            height: 40px;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
+<div class="background2"></div>
 <%
     String error = (String) session.getAttribute("error");
     if (error == null) {
 %>
-
-<table border="1">
-    <tr>
-        <th>交易内容</th>
-        <th>金额</th>
-    </tr>
-    <% for (Transaction transaction : transactions) { %>
-    <tr>
-        <td>
-            <% if (transaction.getFromCardId() == 0) { %>
-            <span>充值</span>
-            <% } else if (transaction.getToCardId() == 0) { %>
-            <span>消费</span>
-            <% } else if (transaction.getFromCardId() == cardId) { %>
-            <span>转账给卡号 <%= transaction.getToCardId() %></span>
-            <% } else { %>
-            <span>给卡号 <%= transaction.getToCardId() %> 转账</span>
-            <% } %>
-        </td>
-        <td>
-            <span><%= String.format(Locale.getDefault(), "¥ %.2f", transaction.getAmount()) %></span>
-        </td>
-    </tr>
-    <% } %>
-    <tr>
-        <td colspan="2">
+<div >
+    <table border="1" class="centers" style="table-layout: fixed">
+        <tr>
+            <th>交易内容</th>
+            <th>交易 POS 机名称</th>
+            <th>金额</th>
+            <th>交易时间</th>
+        </tr>
+        <% if (transactions.size() != 0) { %>
+        <% for (Transaction transaction : transactions) { %>
+        <tr>
+            <td>
+                <% if (transaction.getFromCardId() == 0) { %>
+                <span>给卡号 <%= String.format(Locale.getDefault(), "%06d", transaction.getToCardId()) %> 充值</span>
+                <% } else if (transaction.getToCardId() == 0) { %>
+                <span>卡号 <%= String.format(Locale.getDefault(), "%06d", transaction.getFromCardId()) %> 消费</span>
+                <% } else { %>
+                <span><%= String.format("%06d 转账给卡号 %06d", transaction.getFromCardId(), transaction.getToCardId()) %></span>
+                <% } %>
+            </td>
+            <td>
+                <span><%= transaction.getPosName() %></span>
+            </td>
+            <td>
+                <span><%= String.format(Locale.getDefault(), "¥ %.2f", transaction.getAmount()) %></span>
+            </td>
+            <td>
+                <span><%= transaction.getCreateAt().toString() %></span>
+            </td>
+        </tr>
+        <% }
+        } else { %>
+        <tr>
+            <td colspan="4">暂无交易记录</td>
+        </tr>
+        <% } %>
+        <tr>
+            <td colspan="4">
             <span>
                 <%
                     if (pageNumber == null) {
@@ -104,15 +148,15 @@
                 <% if (pageNumber == 1) { %>
                 <<
                 <% } else { %>
-                <a href="transactions.jsp?page_number=1&page_size=<%= pageSize %>"><<</a>
+                <a href="transactions.jsp?page_number=1&page_size=<%= pageSize %>&card_id=<%= cardId %>"><<</a>
                 <% } %>
 
                 &nbsp;
-                <% for (int i = 0; i < pageNumbers; i++) { %>
+                <% for (int i = 1; i <= pageNumbers; i++) { %>
                 <% if (i == pageNumber) { %>
-                <%= i + 1 %>
+                <%= i %>
                 <% } else { %>
-                <a href="transactions.jsp?page_number=<%= i + 1 %>&page_size=<%= pageSize %>"><%= i + 1 %></a>
+                <a href="transactions.jsp?page_number=<%= i %>&page_size=<%= pageSize %>&card_id=<%= cardId %>"><%= i %></a>
                 <% } %>
                 &nbsp;
                 <% } %>
@@ -120,12 +164,21 @@
                 <% if (pageNumber == pageNumbers) { %>
                 >>
                 <% } else { %>
-                <a href="transactions.jsp?page_number=<%= pageNumbers %>&page_size=<%= pageSize %>">>></a>
+                <a href="transactions.jsp?page_number=<%= pageNumbers %>&page_size=<%= pageSize %>&card_id=<%= cardId %>">>></a>
                 <% } %>
             </span>
-        </td>
-    </tr>
-</table>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    <label hidden>
+        <input type="text" id="abs" value="${pageContext.request.contextPath}">
+        <input type="text" id="type" value=<%=user.getType()%>>
+    </label>
+    <script src="js/form.js"></script>
+    <button onclick="back()" id="back">确认</button>
+
+</div>
 <% } else { %>
 <h3 class="error"><%= error %></h3>
 <% } %>

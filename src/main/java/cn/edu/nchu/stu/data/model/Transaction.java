@@ -6,14 +6,17 @@ public class Transaction {
 
     private long id, fromCardId, toCardId;
 
+    private String posName;
+
     private float amount;
 
     private Timestamp createAt;
 
-    public Transaction(long id, Long fromCardId, Long toCardId, float amount, Timestamp createAt) {
+    public Transaction(long id, Long fromCardId, Long toCardId, String posName, float amount, Timestamp createAt) {
         this.id = id;
         this.fromCardId = fromCardId;
         this.toCardId = toCardId;
+        this.posName = posName;
         this.amount = amount;
         this.createAt = createAt;
     }
@@ -28,6 +31,10 @@ public class Transaction {
 
     public long getToCardId() {
         return toCardId;
+    }
+
+    public String getPosName() {
+        return posName;
     }
 
     public float getAmount() {

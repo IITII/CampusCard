@@ -29,16 +29,16 @@
     <li><a href="${pageContext.request.contextPath}/Admin/piliangdaoruxiaofeijilu.jsp" class="active">批量导入消费记录</a></li>
 </ul>
 <div class="leftPanel">
-    <label>ERROR</label>
-    <form action="" method="post" class="form">
-        <label>卡号：</label>
-        <input type="text" name="card_id"><br>
-        <label>密码：</label>
-        <input type="password" name="password"><br><br>
-        <input type="submit" name="sure" value="确定">
-        &nbsp;&nbsp;
-        <input type="reset" name="cancel" value="取消">
+    <form action="${pageContext.request.contextPath}/import_csv.do" method="post" class="form" enctype="multipart/form-data">
+        <input type="text" name="redirect" value="Admin/piliangdaoruxiaofeijilu.jsp" hidden>
+        <input type="file" name="csv" id="fileField" size="28" /><br><br>
+        <input type="submit" name="submit" value="上传" /><br>
     </form>
+    <br><% String error = (String)session.getAttribute("error");
+    if (error!=null){%>
+    <h3><%=error %></h3>
+    <%}%>
+    <% session.setAttribute("error",null); %>
 </div>
 </body>
 </html>
